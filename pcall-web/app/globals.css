@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Console&display=swap');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.bg-image {
+  background-image: url('/img/body/body-wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body {
+  font-family: 'Console', monospace;
+}
+
