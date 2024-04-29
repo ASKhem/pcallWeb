@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import Button from '../components/main/home/ButtonBuildNow';
-import GalleryBoard from '../components/main/home/BoardImage';
+import Carrousel from '../components/main/home/Carrousel';
 
 export default function Home() {
   const videoRef = React.useRef();
@@ -12,10 +12,18 @@ export default function Home() {
     }
   }, []);
 
+  const images = [
+    '/img/carrousel-main/carrousel-img1.png',
+    '/img/carrousel-main/carrousel-img3.png',
+    '/img/carrousel-main/carrousel-img2.png',
+  ];
+  const texts = ['Build a New Brand Pc with the best Components', 'Bring your PC and get a disccount in your order', 'Or buy a PC with seccond hand components saving up to 50%'];
+  const className = ['class1', 'class2', 'class3'];
+  const alt = ['Alt 1', 'Alt 2', 'Alt 3'];
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-black via-zinc-950 to-zinc-800 flex flex-col items-center justify-center">
-        <div className="w-10/12 flex items-start justify-center gap-10">
+        <div className="w-11/12 flex items-start justify-center gap-10">
           <video ref={videoRef} src="/video/video-presentation.mp4" width="650" height="650" className="rounded-3xl" loop muted></video>
           <div className="w-2/4 py-5 flex flex-col  text-white">
             <h2 className="text-orange-700 text-6xl py-5 font-bold w-full flex items-center">WE BUILD THE BEST PC</h2>
@@ -30,8 +38,18 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="min-h-screen bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500 flex items-center justify-center">
-        <GalleryBoard />
+      <div className=" w-full h-[85vh] bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500 flex flex-col items-center justify-center gap-10">
+        <div className = "w-11/12 text-orange-700 text-5xl font-bold">
+          WHAT WE OFFER
+        </div>
+        <div className="w-full flex items-center justify-center">
+          <Carrousel
+            images={images}
+            texts={texts}
+            className={className}
+            alt={alt}
+          />
+        </div>
       </div>
       <div className="min-h-screen bg-gradient-to-bl from-black via-zinc-950 to-zinc-800 flex flex-col items-center justify-center">
 
