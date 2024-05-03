@@ -2,6 +2,7 @@
 import React from 'react';
 import Button from '../components/main/home/ButtonBuildNow';
 import Carrousel from '../components/main/home/Carrousel';
+import { FaSquare } from "react-icons/fa6";
 
 export default function Home() {
   const videoRef = React.useRef();
@@ -38,9 +39,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className=" w-full h-[85vh] bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500 flex flex-col items-center justify-center gap-10">
-        <div className = "w-11/12 text-orange-700 text-5xl font-bold">
-          WHAT WE OFFER
+      <div className=" w-full h-min-[85vh] bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500 flex flex-col items-center justify-center gap-10 py-10">
+        <div className = "w-11/12 text-orange-700 text-5xl font-bold flex items-ceter gap-10">
+          <FaSquare/><h2>WHAT WE OFFER</h2>
         </div>
         <div className="w-full flex items-center justify-center">
           <Carrousel
@@ -52,7 +53,9 @@ export default function Home() {
         </div>
       </div>
       <div className="min-h-screen bg-gradient-to-bl from-black via-zinc-950 to-zinc-800 flex flex-col items-center justify-center">
-
+        <div className = "w-11/12 text-orange-700 text-5xl font-bold text-right">
+            HOW WE WORK
+        </div>
       </div>
 
     </>
