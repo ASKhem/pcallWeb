@@ -28,7 +28,7 @@ function LateralSocials() {
                 ))}
             </div>
             <div id="lateral-socials2" className={`h-56 w-6 flex justify-center items-center flex-col bg-custom-blue border border-gray-800 border-l-0 rounded-r-lg ${isHidden ? '' : 'hidden'}`}>
-                <a className='text-white flex justify-center items-center w-full h-full'>
+                <a className="text-white flex justify-center items-center w-full h-full">
                     S<br />O<br />C<br />I<br />A<br />L<br />S
                 </a>
             </div>

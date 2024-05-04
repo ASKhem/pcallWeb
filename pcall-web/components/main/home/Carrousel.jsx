@@ -28,8 +28,6 @@ function Carrousel({ images, texts, alt }) {
                             color={3}
                         />
                 </ul>
-
-
             </div>
         </div>
     );
