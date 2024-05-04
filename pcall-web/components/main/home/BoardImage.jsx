@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from 'next/link';
 
-function BoardImage({ src, alt, text, vidSrc, color}) {
+function BoardImage({ src, alt, text, vidSrc, color }) {
     const [currentSrc, setCurrentSrc] = useState(src);
 
     const handleMouseOver = () => {
@@ -16,18 +16,18 @@ function BoardImage({ src, alt, text, vidSrc, color}) {
 
     return (
         <li
-            className = "p-5 w-[30%] h-11/12 flex items-center gap-10 rounded-2xl"
+            className="relative w-[30%] h-11/12 flex items-center gap-10"
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
         >
-            <Link href="/" className="w-full h-11/12 flex flex-col items-center gap-10">
-                <div className = "w-full h-11/12 flex flex-col items-center gap-10">
+            <Link href="/" className="relative w-full h-11/12 flex flex-col items-center gap-10 backdrop-blur-2xl">
+                <div className="w-full h-11/12 flex flex-col items-center gap-10 m-6">
                     <img
                         src={currentSrc}
                         alt={alt}
-                        className={`rounded-xl w-11/12 h-6/12 object-cover border-2 transition-all duration-500 ease-in-out ${color}`}
+                        className={`w-11/12 h-6/12 object-cover border-2 border-transparent transition-all duration-500 ease-in-out ${color}`}
                     />
-                    <p className="w-11/12  text-black text-2xl font-bold">{text}</p>
+                    <p className="w-11/12 text-black text-2xl font-bold">{text}</p>
                 </div>
             </Link>
         </li>

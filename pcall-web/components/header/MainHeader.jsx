@@ -8,7 +8,7 @@ function Header() {
     return (
         <>
             <header className="fixed t-0 w-full bg-custom-blue z-30 flex items-center justify-center">
-                <div className='w-10/12  h-16 py-2 flex items-center justify-between'>
+                <div className='w-11/12  h-16 py-2 flex items-center justify-between'>
                     <div className="flex items-center justify-around">
                         <div className="h-12 flex items-center m-5 mr-20">
                             <Link href="/"><Image src="/img/header/logo.png" alt="logo" width={90} height={40} priority/></Link>

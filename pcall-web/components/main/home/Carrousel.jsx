@@ -4,8 +4,8 @@ function Carrousel({ images, texts, alt }) {
 
     return (
         <div className="w-full flex flex-col items-center justify-center">
-            <div className="w-11/12 flex flex-col items-center justify-between gap-5 mb-10">
-                <ul className="w-full flex items-start justify-between gap-10">
+            <div className="w-11/12 flex flex-col items-center justify-between mb-10">
+                <ul className="w-full flex items-start justify-between">
                         <Bimage
                             src={images[0]}
                             vidSrc={images[0].replace('.png', '-vid.gif')}
