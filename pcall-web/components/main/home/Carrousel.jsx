@@ -27,6 +27,13 @@ function Carrousel({ images, texts, alt }) {
                             text={texts[2]}
                             color={3}
                         />
+                        <Bimage
+                            src={images[3]}
+                            vidSrc={images[3].replace('.png', '-vid.gif')}
+                            alt={alt[3]}
+                            text={texts[3]}
+                            color={4}
+                        />
                 </ul>
             </div>
         </div>

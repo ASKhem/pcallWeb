@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react";
 import Link from 'next/link';
 
@@ -12,7 +13,7 @@ function BoardImage({ src, alt, text, vidSrc, color }) {
         setCurrentSrc(src);
     };
 
-    color = color === 1 ? "hover:border-red-600" : color === 2 ? "hover:border-amber-500" : "hover:border-green-600";
+    color = color === 1 ? "hover:border-red-600" : color === 2 ? "hover:border-amber-500" : color === 3 ? "hover:border-green-600" : "hover:border-pink-600";
 
     return (
         <li
@@ -20,14 +21,14 @@ function BoardImage({ src, alt, text, vidSrc, color }) {
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
         >
-            <Link href="/" className="relative w-full h-11/12 flex flex-col items-center gap-10 backdrop-blur-2xl">
+            <Link href="/" className="relative w-full h-11/12 flex flex-col items-center gap-10">
                 <div className="w-full h-11/12 flex flex-col items-center gap-10 m-6">
                     <img
                         src={currentSrc}
                         alt={alt}
-                        className={`w-11/12 h-6/12 object-cover border-2 border-transparent transition-all duration-500 ease-in-out ${color}`}
+                        className={`w-11/12 h-6/12 object-cover border-2 border-black border-transparent transition-all duration-500 ease-in-out ${color}`}
                     />
-                    <p className="w-11/12 text-black text-2xl font-bold">{text}</p>
+                    <p className="w-11/12 text-black text-xl font-bold">{text}</p>
                 </div>
             </Link>
         </li>
