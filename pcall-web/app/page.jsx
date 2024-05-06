@@ -4,6 +4,8 @@ import Carrousel from '../components/main/home/Carrousel';
 import { FaSpaceAwesome } from "react-icons/fa6";
 import { FaSquare } from "react-icons/fa6";
 import FancyVideoEffect from '../components/main/FancyVideoEffect';
+import ImgBlurEffect from '../components/main/home/ImgBlurEffect';
+import SponsorsCarrousel from '../components/main/home/SponsorsCarrousel';
 
 export default function Home() {
 
@@ -45,6 +47,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <div className=" w-full h-min-[85vh] bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500 flex flex-col items-center justify-center gap-10 pt-10">
         <div className="w-11/12 text-custom-blue font-bold flex items-ceter gap-10 border-b-2 border-b-gray-800 pb-10">
           <div className="w-full flex flex-col gap-5">
@@ -58,6 +61,7 @@ export default function Home() {
           <Carrousel images={images} texts={texts} className={className} alt={alt} />
         </div>
       </div>
+
       <div className="min-h-screen bg-gradient-to-bl from-black via-zinc-950 to-zinc-800 flex flex-col items-center justify-center  gap-10 py-10 pb-32">
         <div className="w-11/12 text-orange-600 font-bold flex items-ceter gap-10 border-b-2 border-b-gray-500 pb-10">
           <div className="w-full flex flex-col gap-5">
@@ -99,18 +103,82 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-col-1 items-end">
-            
+
             <div className="w-full h-[45vh]">
               <p >We deliver your PC to your door, ready to use</p>
               <FancyVideoEffect videoSrc="/video/pcShow.mp4" />
             </div>
           </div>
         </div>
-
       </div>
-      <div className="w-full h-min-screen bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500 flex flex-col items-center justify-center gap-10 py-10">
-        <div className="w-11/12 min-h-screen text-orange-700 text-5xl font-bold flex items-ceter gap-10">
-          <FaSquare /><h2>Our Sponsors</h2>
+
+
+      <div className=" w-full h-min-[85vh] bg-gradient-to-bl from-zinc-100 via-zinc-300 to-zinc-500 flex flex-col items-center justify-center gap-10 pt-10 pb-20">
+        <div className="w-11/12 text-custom-blue font-bold flex flex-col items-ceter gap-10 border-b-2 border-b-gray-800 pb-10">
+          <div className="w-full flex flex-col gap-5">
+            <div className="w-full flex items-center text-5xl gap-5">
+              <FaSquare /><h2>Our Sponsors</h2>
+            </div>
+            <p>We are proud to have the support of the best brands in the industry, who provide us with the best components and equipment to build the best PCs</p>
+          </div>
+        </div>
+        <div className="w-10/12 h-full flex items-start gap-10 justify-center">
+          <div className="w-8/12 grid grid-rows-3 justify-center items-center gap-10">
+            <div className="w-full h-fullrow-span-1 flex items-center justify-center gap-10">
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/razerLogo.png" altText="razer image"
+                companyName="RAZER" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/amdLogo.png" altText="razer image"
+                companyName="AMD" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/corsairLogo.png" altText="razer image"
+                companyName="CORSAIR" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+            </div>
+            <div className="w-full h-full row-span-1 flex items-center justify-center gap-10">
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/samsungLogo.png" altText="razer image"
+                companyName="SAMSUNG" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/msiLogo.png" altText="razer image"
+                companyName="MSI" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/nvidiaLogo.png" altText="razer image"
+                companyName="NVIDIA" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+            </div>
+            <div className="w-full h-full row-span-1 flex items-center justify-center gap-10">
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/tempestLogo.png" altText="razer image"
+                companyName="TEMPEST" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/intelLogo.png" altText="razer image"
+                companyName="INTEL" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+              <ImgBlurEffect
+                imgSrc="/img/sponsors/hyperXLogo.png" altText="razer image"
+                companyName="HYPER X" mainText="An amazing experience"
+                text="Never tried such a nice place to build a pc"
+              />
+            </div>
+          </div>
+          <div className="w-4/12 h-full flex center justify-center bg-black">
+            <SponsorsCarrousel imagesSrc={["/img/sponsors/add/intelAddBanner.png", "/img/sponsors/add/asusAddBanner.png", "/img/sponsors/add/corsairAddBanner.png"]} />
+          </div>
         </div>
       </div>
 
