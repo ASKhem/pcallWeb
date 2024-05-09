@@ -4,8 +4,10 @@ import LateralSocials from "../components/socials/LateralSocials";
 import Footer from "../components/footer/Footer";
 
 export const metadata = {
-  title: "PC ALL",
-  description: "Página principal",
+  title: "HOME",
+  description: "Main web page",
+  keywords: "PC, Build, Gallery, Sell, Components, Second-hand, Custom, New, Discount, Builds, Services",
+  
 };
 
 export default function RootLayout({ children }) {

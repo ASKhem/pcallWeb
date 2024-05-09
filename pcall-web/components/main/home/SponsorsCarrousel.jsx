@@ -13,9 +13,9 @@ export default function SponsorsCorrousel({imagesSrc}) {
     }, [active, imagesSrc]);
 
     return (
-        <div class="w-full h-full">
-            <div class="w-full h-full flex items-center justify-center">
-                <img src={activeSrc} alt="razer image" class={active} />
+        <div className="w-full h-full">
+            <div className="w-full h-full flex items-center justify-center">
+                <img src={activeSrc} alt="razer image" className={active} />
             </div>
         </div>
     );

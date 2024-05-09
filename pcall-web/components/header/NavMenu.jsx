@@ -9,7 +9,7 @@ const menuItems = [
         children: [
             {
                 title: "New PC",
-                route: "/buildpc/new",
+                route: "/buildPc/new",
                 image: "/img/header/DropDownMenu/buildpc_img1.png",
             },
             {
