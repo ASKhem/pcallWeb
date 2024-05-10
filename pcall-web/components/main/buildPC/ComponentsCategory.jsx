@@ -22,11 +22,15 @@ async function loadComponentsData(category) {
     }
 }
 
-function ComponentsCategory({ category }) {
+function ComponentsCategory({ category, addComponent }) {
     const [data, setData] = useState(null);
     useEffect(() => {
         loadComponentsData(category).then(setData);
     }, [category]);
+
+    function handleComponent(component) {
+        addComponent(component);
+    }
 
     if (data === null) {
         return <div>Loading...</div>;
@@ -36,7 +40,7 @@ function ComponentsCategory({ category }) {
         <div className="w-11/12 justify-center items-center grid grid-cols-4 grid-rows-auto gap-y-10">
             {data.map((component) => {
                 return (
-                    <div key={component.id} className="flex justify-center items-center">
+                    <div key={component.id} className="flex justify-center items-center" onClick={() => handleComponent(component)}>
                         <BuildPcCard data={component} />
                     </div>
                 );
