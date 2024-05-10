@@ -57,7 +57,7 @@ function GalleryCard({ name, imgSrc, altText, text, selected, onItemClick, chang
 
     return (
         <div
-            className={`relative h-full w-full group overflow-hidden shadow-lg shadow-black  p-3r drop-shadow-sm rounded-xl border-2  border-zinc-400 ${selected ? "border-orange-600" : "border-white"}`}
+            className={`relative h-full w-full group overflow-hidden shadow-lg shadow-black  p-3r drop-shadow-sm rounded-xl border-2 hover:border-orange-600 ${selected ? "border-orange-600" : "border-zinc-400"}`}
             onClick={() => {
                 handleItemClick();
                 handleChangeCategory();
