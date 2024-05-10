@@ -1,47 +1,48 @@
 "use client"
-import { useState, useEffect } from 'react';
-import BuildPcCard from "../../../components/main/buildPC/BuildPcCard"
-
-async function loadComponentsData() {
-    try {
-        const res = await fetch("http://localhost:9051/component/list", {
-            headers: {
-                'Cache-Control': 'no-cache'
-            }
-        });
-        if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        const data = await res.json();
-        return data;
-    } catch (error) {
-        console.error('An error occurred while fetching the data:', error);
-        return null;
-    }   
-}
+import { FaSquare } from "react-icons/fa6";
+import GalleryComponent from "../../../components/main/buildPC/GalleryComponent";
+import MusicPlayer from "../../../components/main/buildPC/MusicPlayer";
+import ComponentsCategory from "../../../components/main/buildPC/ComponentsCategory"
+import { useState } from "react";
+import ProgressBar from "../../../components/main/buildPC/ProgressBar"
 
 function BuildNewPcPage() {
-    const [data, setData] = useState(null);
+    const [category, setCategory] = useState("Case")
 
-    useEffect(() => {
-        loadComponentsData().then(setData);
-    }, []);
-
-    if (data === null) {
-        return <div>Loading...</div>;
+    function handleCategory(newCategory) {
+        setCategory(newCategory);
     }
 
-    console.log(data);
-
     return (
-        <div className = "grid grid-cols-4 grid-rows-auto gap-y-10">
-            {data.map((component) => {
-                return (
-                    <div key={component.id}>
-                        <BuildPcCard data ={component}/>
+        <div className="w-full justify-center items-center flex flex-col">
+            <div className="w-11/12 min-h-screen pt-10">
+                <div className="h-30 w-full flex flex-col items-center  justify-left text-5xl gap-5">
+
+                    <div className="flex w-full h-full pb-5">
+                        <div className="flex w-5/12">
+                            <FaSquare /><h1 className="text-4xl text-center font-bold">Build your new PC</h1>
+                        </div>
                     </div>
-                );
-            })}
+
+                    <div className="flex w-full items-center justify-center">
+                        <div className="flex w-5/12 items-center justify-center ml-5">
+                            <MusicPlayer />
+                        </div>
+                        <div className="w-7/12 flex items-center justify-center">
+                         <ProgressBar progress={4}/>
+                        </div>
+                    </div>
+
+                    <div className="w-full flex items-center justify center">
+                        <GalleryComponent selectCategory={handleCategory} />
+                    </div>
+
+                </div>
+            </div>
+            <div className="w-full min-h-96 flex items-center justify-center">
+                <ComponentsCategory category={category} />
+            </div>
+
         </div>
     )
 }
