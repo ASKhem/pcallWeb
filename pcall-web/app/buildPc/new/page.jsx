@@ -5,7 +5,6 @@ import MusicPlayer from "../../../components/main/buildPC/MusicPlayer";
 import ComponentsCategory from "../../../components/main/buildPC/ComponentsCategory"
 import { useState } from "react";
 import ProgressBar from "../../../components/main/buildPC/ProgressBar"
-import { data } from "autoprefixer";
 
 function findFormComponentByCategory(category, computerForm) {
     for (const key in computerForm) {
@@ -23,7 +22,7 @@ function totalPrice(computerForm) {
             total += computerForm[key].price;
         }
     }
-    return total;
+    return total.toFixed(2);
 }
 
 function progressBar(computerForm) {
@@ -40,15 +39,15 @@ function progressBar(computerForm) {
 function BuildNewPcPage() {
     const [category, setCategory] = useState("Case")
     const [computerForm, setComputerForm] = useState({
+        "Case": null,
+        "Motherboard": null,
         "CPU": null,
         "GPU": null,
         "RAM": null,
-        "Motherboard": null,
-        "Hard_Drive": null,
         "NVMe": null,
-        "Power_Supply": null,
-        "Case": null,
+        "Hard_Drive": null,
         "CPUCooling": null,
+        "Power_Supply": null,
         "Cooling_Fan": null,
         "Network_Card": null,
         "Sound_Card": null,
@@ -60,7 +59,6 @@ function BuildNewPcPage() {
 
     let component = findFormComponentByCategory(category, computerForm);
 
-    console.log(computerForm);
 
     function handleCategory(newCategory) {
         setCategory(newCategory);
@@ -78,32 +76,36 @@ function BuildNewPcPage() {
             <div className="w-11/12 min-h-screen pt-10">
                 <div className="h-40 w-full flex flex-col items-center  justify-left text-5xl gap-5">
 
-                    <div className="flex w-full h-full pb-5">
+                    <div className="flex w-full h-full pb-3">
                         <div className="flex w-5/12">
                             <FaSquare /><h1 className="text-4xl text-center font-bold">Build your new PC</h1>
                         </div>
                     </div>
 
-                    <div className="flex h- w-full items-center justify-center">
-                        <div className="flex w-5/12 items-center justify-center ml-5">
-                            <MusicPlayer />
-                        </div>
-                        <div className="w-7/12 h-full flex items-center justify-end flex-col">
-                            <ProgressBar progress={progress} />
-                        </div>
-                    </div>
+                    <div className="w-full flex flex-col items-center justify center gap-1">
+                        <GalleryComponent selectCategory={handleCategory} component={component} pcForm={computerForm} progress={progress} />
+                        <div className="w-full flex items-center justify-start p-2 gap-5">
+                            <div className="w-[45%] h-full  flex items-center justify-center">
+                                <MusicPlayer />
+                            </div>
+                            <div className="w-[52%] flex items-center justify-center gap-1 pr-4">
+                                <span className="w-1/3 h-12">
 
-                    <div className="w-full flex flex-col items-center justify center gap-3">
-                        <GalleryComponent selectCategory={handleCategory} category={setCategory} component={component} />
-                        <div className="w-full flex items-center justify-end px-5">
-                            <span className="border-2 border-zinc-400 shadow-md text-xl rounded-xl bg-custom-blue w-2/12 font-bold text-zinc-200 flex items-center justify-center p-2 shadow-zinc-600 hover:border-orange-500">{total}€</span>
+                                </span>
+                                <span className="w-1/3 h-12 text-xl font-bold flex items-center justify-center p-2 border-b-2 border-zinc-700 text-black">
+                                    {total}€
+                                </span>
+                                <button className="w-1/3 h-12 border-2 border-zinc-400 shadow-md text-xl rounded-xl bg-custom-blue font-bold text-zinc-200 flex items-center justify-center p-2 shadow-zinc-600 active:scale-95 transition-all duration-300 hover:bg-zinc-200 hover:text-custom-blue">
+                                    Build
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
             <div className="w-11/12 min-h-96 flex items-center justify-center border-t-2 border-custom-blue py-14">
-                <ComponentsCategory category={category} addComponent={handleComponent}/>
+                <ComponentsCategory category={category} addComponent={handleComponent} />
             </div>
 
         </div>

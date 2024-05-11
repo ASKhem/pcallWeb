@@ -1,5 +1,5 @@
 export default function BuildPcCard({data}){
-    console.log(data)
+
     return <>
         <div className =" h-auto w-72 group bg-white text-white flex flex-col shadow-2xl hover:border-orange-600 transition-all duration-400 border-zinc-400 border-2 rounded-xl">
             <img src ={`http://localhost:9051/images/components/${data.image}.png`} alt="image" className ="w-full h-8/12 inset-0 object-cover border-2 border-gray-300 rounded-t-xl"/>

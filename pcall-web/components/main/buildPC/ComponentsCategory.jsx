@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 
 async function loadComponentsData(category) {
-    console.log(category)
+
     try {
         const res = await fetch("http://localhost:9051/component/list/" + category, {
             headers: {

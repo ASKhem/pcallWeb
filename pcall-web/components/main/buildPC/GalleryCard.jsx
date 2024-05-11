@@ -1,8 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import ComponentsCategory from './ComponentsCategory';
-
-function Gallery({selectCategory}) {
+const componentsList = ["Case", "Motherboard", "CPU", "GPU", "RAM", "NVMe", "Hard_Drive", "CPUCooling", "Power_Supply", "Cooling_Fan", "Network_Card", "Sound_Card"];
+function Gallery({ selectCategory, componentsInfo}) {
     const [selectedItem, setSelectedItem] = useState("Case");
 
     const handleItemClick = (itemName) => {
@@ -10,18 +9,18 @@ function Gallery({selectCategory}) {
     };
 
     const items = [
-        { name: "Case", altText: "Imagen de la caja", imgSrc: "/img/galleryCards/caseOp.png", category: "Case"},
-        { name: "Motherboard", altText: "Imagen de la placa madre", imgSrc: "/img/galleryCards/motherboardOp.png", category: "Motherboard"},
-        { name: "Processor", altText: "Imagen del procesador", imgSrc: "/img/galleryCards/processorOp.png", category: "CPU"},
-        { name: "Graphic Card", altText: "Imagen de la tarjeta gráfica", imgSrc: "/img/galleryCards/graphicCardOp.png", category: "GPU"},
-        { name: "RAM", altText: "Imagen de la memoria RAM", imgSrc: "/img/galleryCards/ramOp.png", category: "RAM"},
-        { name: "NVMe memory", altText: "Imagen de la memoria NVMe", imgSrc: "/img/galleryCards/nvmeOp.png", category: "NVMe"},
-        { name: "Hard Drive", altText: "Imagen del disco duro", imgSrc: "/img/galleryCards/hardDriveOp.png", category: "Hard_Drive"},
-        { name: "CPU Cooling", altText: "Imagen de la refrigeración de la CPU", imgSrc: "/img/galleryCards/cpuCoolingOp.png", category: "CPUCooling"},
-        { name: "Power Supply", altText: "Imagen de la fuente de alimentación", imgSrc: "/img/galleryCards/powerSupplyOp.png", category: "Power_Supply"},
-        { name: "Cooling Fan", altText: "Imagen del ventilador de refrigeración", imgSrc: "/img/galleryCards/coolingFanOp.png", category: "Cooling_Fan"},
-        { name: "Network Card", altText: "Imagen de la tarjeta de red", imgSrc: "/img/galleryCards/networkCardOp.png", category: "Network_Card"},
-        { name: "Sound Card", altText: "Imagen de la tarjeta de sonido" , imgSrc: "/img/galleryCards/soundCardOp.png", category: "Sound_Card"},
+        { name: "Case", altText: "Imagen de la caja", imgSrc: "/img/galleryCards/caseOp.png", category: "Case" },
+        { name: "Motherboard", altText: "Imagen de la placa madre", imgSrc: "/img/galleryCards/motherboardOp.png", category: "Motherboard" },
+        { name: "Processor", altText: "Imagen del procesador", imgSrc: "/img/galleryCards/processorOp.png", category: "CPU" },
+        { name: "Graphic Card", altText: "Imagen de la tarjeta gráfica", imgSrc: "/img/galleryCards/graphicCardOp.png", category: "GPU" },
+        { name: "RAM", altText: "Imagen de la memoria RAM", imgSrc: "/img/galleryCards/ramOp.png", category: "RAM" },
+        { name: "NVMe memory", altText: "Imagen de la memoria NVMe", imgSrc: "/img/galleryCards/nvmeOp.png", category: "NVMe" },
+        { name: "Hard Drive", altText: "Imagen del disco duro", imgSrc: "/img/galleryCards/hardDriveOp.png", category: "Hard_Drive" },
+        { name: "CPU Cooling", altText: "Imagen de la refrigeración de la CPU", imgSrc: "/img/galleryCards/cpuCoolingOp.png", category: "CPUCooling" },
+        { name: "Power Supply", altText: "Imagen de la fuente de alimentación", imgSrc: "/img/galleryCards/powerSupplyOp.png", category: "Power_Supply" },
+        { name: "Cooling Fan", altText: "Imagen del ventilador de refrigeración", imgSrc: "/img/galleryCards/coolingFanOp.png", category: "Cooling_Fan" },
+        { name: "Network Card", altText: "Imagen de la tarjeta de red", imgSrc: "/img/galleryCards/networkCardOp.png", category: "Network_Card" },
+        { name: "Sound Card", altText: "Imagen de la tarjeta de sonido", imgSrc: "/img/galleryCards/soundCardOp.png", category: "Sound_Card" },
     ];
 
     return (
@@ -37,6 +36,7 @@ function Gallery({selectCategory}) {
                         onItemClick={handleItemClick}
                         changeCategory={selectCategory}
                         category={item.category}
+                        componentInfo={componentsInfo[componentsList[index]]}
                     />
                 </li>
             ))}
@@ -46,7 +46,8 @@ function Gallery({selectCategory}) {
 
 export default Gallery;
 
-function GalleryCard({ name, imgSrc, altText, text, selected, onItemClick, changeCategory, category}) {
+function GalleryCard({ name, imgSrc, altText, text, selected, onItemClick, changeCategory, category, componentInfo}) {
+
     const handleItemClick = () => {
         onItemClick(name);
     };
@@ -65,12 +66,22 @@ function GalleryCard({ name, imgSrc, altText, text, selected, onItemClick, chang
         >
             <img src={imgSrc} alt={altText} className="absolute w-full h-full inset-0 object-cover text-sm" />
             <div
-                className={`absolute inset-0 w-full h-full  bg-black bg-opacity-0 transition duration-500 backdrop-filter ${selected ? "bg-opacity-20 backdrop-blur" : " "}`} >
+                className={`absolute inset-0 w-full h-full  bg-black bg-opacity-0 transition duration-500 backdrop-filter ${selected || componentInfo != null ? "bg-opacity-20 backdrop-blur" : " "}`} >
             </div>
             <div className="absolute inset-x-5 text-white">
-                <h2 className="text-3xl font-semibold mb-2">{name}</h2>
-                <p className={`text-lg ${selected ? "block" : "hidden"}`}>{text}</p>
+                <h2 className="text-2xl font-semibold mb-2">{name}</h2>
+                {
+                    componentInfo != null ? (
+                        <div>
+                            <p className="text-sm">{componentInfo.brand} {componentInfo.model}</p>
+                            <p className="text-sm">{componentInfo.price}€</p>
+                        </div>
+                    ) : (
+                        " "
+                    )
+                }
             </div>
+
         </div>
     );
 }
