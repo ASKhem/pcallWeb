@@ -19,18 +19,20 @@ export default function MusicPlayer() {
     const [active, setActive] = useState(false)
     const audioRef = useRef(null);
 
-    const nextSong = () => {
-        stopMusic();
-        const currentIndex = songs.findIndex(song => song.name === currentSong.name)
+    function nextSong() {
+        let currentIndex = songs.findIndex(song => song === currentSong);
+        let nextIndex = (currentIndex + 1) % songs.length;
+        setCurrentSong(songs[nextIndex]);
         setActive(false)
-        if (currentIndex === songs.length - 1) {
-            setCurrentSong(songs[0])
-        } else {
-            setCurrentSong(songs[currentIndex + 1])
-        }
     }
 
-    console.log(currentSong)
+    function nextSongPlay() {
+        let currentIndex = songs.findIndex(song => song === currentSong);
+        let nextIndex = (currentIndex + 1) % songs.length;
+        setCurrentSong(songs[nextIndex]);
+        playMusic();
+        setActive(true)
+    }
 
     const PrevSong = () => {
         const currentIndex = songs.findIndex(song => song.name === currentSong.name)
@@ -52,7 +54,7 @@ export default function MusicPlayer() {
                     console.error('Autoplay prevented:', error);
                 });
             }
-        
+
             setTimeout(() => {
                 if (audioRef.current && audioRef.current.paused) {
                     audioRef.current.play();
@@ -73,16 +75,16 @@ export default function MusicPlayer() {
         if (active) {
             stopMusic();
         } else {
-            playMusic(); 
+            playMusic();
         }
     }
 
     return (
-        <div className="w-96 h-full bg-zinc-300 border-2 border-zinc-400 hover:border-orange-600 transition-all duration-300 text-lg rounded-full flex items-center justify-between text-zinc-700 shadow-xl shadow-zinc-500 backdrop-opacity-40">
+        <div className="w-8/12 h-12 bg-zinc-300 border-2 border-zinc-400 transition-all duration-300 text-lg rounded-full flex items-center justify-between text-zinc-700 shadow-xl shadow-zinc-500">
             <div className="relative w-16 h-16">
-                <img src={currentSong.coverImg} alt="mc" className={`w-full h-full circle text-sm rounded-full p-1 shadow-lg ${active ? 'animate-spin-slow' : ''}`} />
-                <FaDotCircle className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-200 opacity-50 ${active ? 'animate-pulse' : ''}`} />
-                <audio ref={audioRef} src={currentSong.musicUrl}/>
+                <img src={currentSong.coverImg} alt="mc" className={`w-16 h-16 circle text-sm rounded-full bg-black ${active ? 'animate-spin-slow' : ''}`} />
+                <FaDotCircle className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-200 opacity-75 ${active ? 'animate-pulse' : ''}`} />
+                <audio ref={audioRef} src={currentSong.musicUrl} onEnded={nextSongPlay} />
             </div>
 
             <div className="overflow-hidden w-5/12 h-6 whitespace-nowrap">
