@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 async function loadComponentsData(category) {
 
     try {
-        const res = await fetch("http://localhost:9051/component/list/" + category, {
+        const res = await fetch("http://localhost:9090/component/list/" + category, {
             headers: {
                 'Cache-Control': 'no-cache'
             }
@@ -24,6 +24,7 @@ async function loadComponentsData(category) {
 
 function ComponentsCategory({ category, addComponent }) {
     const [data, setData] = useState(null);
+    
     useEffect(() => {
         loadComponentsData(category).then(setData);
     }, [category]);
@@ -33,7 +34,13 @@ function ComponentsCategory({ category, addComponent }) {
     }
 
     if (data === null) {
-        return <div>Loading...</div>;
+        return (
+            <div className="flex items-center justify-center gap-5 text-custom-blue">
+                <div class="border-gray-300 h-16 w-16 animate-spin rounded-full border-8 border-t-custom-blue" />
+                <p className ="text-lg">Loading data ...</p>
+            </div>
+        )
+
     }
 
     return (

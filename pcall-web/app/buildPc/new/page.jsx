@@ -4,7 +4,6 @@ import GalleryComponent from "../../../components/main/buildPC/GalleryComponent"
 import MusicPlayer from "../../../components/main/buildPC/MusicPlayer";
 import ComponentsCategory from "../../../components/main/buildPC/ComponentsCategory"
 import { useState } from "react";
-import ProgressBar from "../../../components/main/buildPC/ProgressBar"
 
 function findFormComponentByCategory(category, computerForm) {
     for (const key in computerForm) {
@@ -76,7 +75,7 @@ function BuildNewPcPage() {
             <div className="w-11/12 min-h-screen pt-10">
                 <div className="h-40 w-full flex flex-col items-center  justify-left text-5xl gap-5">
 
-                    <div className="flex w-full h-full pb-3">
+                    <div className="flex w-full h-full pb-3 text-custom-blue">
                         <div className="flex w-5/12">
                             <FaSquare /><h1 className="text-4xl text-center font-bold">Build your new PC</h1>
                         </div>

@@ -1,20 +1,6 @@
 import Gallery from "./GalleryCard";
 import ProgressBar from './ProgressBar';
 
-const categories = [
-  "Case",
-  "Motherboard",
-  "Processor",
-  "Graphic Card",
-  "RAM",
-  "NVMe memory",
-  "Hard Drive",
-  "CPU Cooling",
-  "Power Supply",
-  "Cooling Fan",
-  "Network Card",
-  "Sound Card",
-]
 function componentCategoryConversion(component) {
   const componentMap = {
     "Case": "Case",
@@ -40,7 +26,7 @@ function GalleryComponent({ selectCategory, component, pcForm, progress }) {
   return (
     <div className="w-full h-[70vh] flex items-center justify-between">
       <div className="w-6/12 h-full p-2">
-        <div className="relative text-white w-full h-full border-2 border-zinc-400 bg-gradient-to-br from-black via-zinc-950 to-zinc-800 via-zinc-900 rounded-xl shadow-2xl shadow-black">
+        <div className="relative text-white w-full h-full border-2 border-zinc-400 bg-gradient-to-br from-black via-zinc-950 to-zinc-800 rounded-xl shadow-2xl shadow-black">
           <img src="/img/galleryComponent/gcAnimation.gif" alt="Imagen de la construcción de un PC" className="w-full h-full object-cover absolute rounded-xl" />
           {component && (
             <div className="text-lg flex flex-col items-center justify-between w-full h-full rounded-xl">
